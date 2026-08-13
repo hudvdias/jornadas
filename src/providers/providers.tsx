@@ -1,5 +1,4 @@
-import { CssBaseline } from "@mui/material";
-import GlobalStyles from "@mui/material/GlobalStyles";
+import { CssBaseline, GlobalStyles } from "@mui/material";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import type { ReactNode } from "react";
 import { BrowserRouter } from "react-router";
@@ -10,7 +9,7 @@ type Props = { children: ReactNode };
 export function Providers(props: Props) {
   return (
     <>
-      <StyledEngineProvider>
+      <StyledEngineProvider enableCssLayer>
         <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
         <ThemeProvider theme={theme}>
           <CssBaseline />

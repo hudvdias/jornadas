@@ -5,7 +5,7 @@ export function LoginPage() {
     <Container className="flex flex-col items-center h-screen p-8">
       <Card className="w-md">
         <CardContent className="flex flex-col gap-4 items-center" component={"form"}>
-          <Typography>Entrar</Typography>
+          <Typography>Continue sua jornada</Typography>
 
           <TextField label="Usuário" required fullWidth />
           <TextField label="Senha" required type="password" fullWidth />
@@ -14,7 +14,7 @@ export function LoginPage() {
           </Button>
 
           <Typography>
-            Ainda não tem uma conta? <Link>Criar conta</Link>
+            Ainda não tem uma conta? <Link href="/register">Criar conta</Link>
           </Typography>
         </CardContent>
       </Card>
