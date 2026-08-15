@@ -3,3 +3,12 @@ export type User = {
   username: string;
   password: string;
 };
+
+export type Task = {
+  id: string;
+  userId: string;
+  title: string;
+  status: TaskStatus;
+};
+
+export type TaskStatus = "todo" | "doing" | "done" | "failed";

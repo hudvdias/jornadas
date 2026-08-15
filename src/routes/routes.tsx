@@ -5,6 +5,7 @@ import { DashboardLayout } from "../components/layout/dashboard-layout";
 import { LoginPage } from "../pages/authentication/login";
 import { RegisterPage } from "../pages/authentication/register";
 import { DashboardPage } from "../pages/dashboard/dashboard";
+import { ManagerPage } from "../pages/dashboard/manager";
 import { HomePage } from "../pages/home";
 import { NotFounPage } from "../pages/not-found";
 
@@ -24,6 +25,7 @@ export function AppRoutes() {
       <Route element={<RequireAuth />}>
         <Route element={<DashboardLayout />}>
           <Route path="dashboard" element={<DashboardPage />}></Route>
+          <Route path="manager" element={<ManagerPage />}></Route>
         </Route>
       </Route>
 
