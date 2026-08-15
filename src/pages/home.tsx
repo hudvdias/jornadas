@@ -9,7 +9,7 @@ export function HomePage() {
       <Typography color="textSecondary" className="mt-2!">
         App de tarefas.
       </Typography>
-      <Button className="mt-8!000" variant="contained" href="/login">
+      <Button className="mt-8!" variant="contained" href="/login">
         Iniciar jornada
       </Button>
     </Container>

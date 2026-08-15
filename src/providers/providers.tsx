@@ -3,6 +3,7 @@ import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import type { ReactNode } from "react";
 import { BrowserRouter } from "react-router";
 import { theme } from "../styles/theme";
+import { AuthContextProvider } from "./auth-context-provider";
 
 type Props = { children: ReactNode };
 
@@ -14,7 +15,9 @@ export function Providers(props: Props) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <BrowserRouter>
-            <>{props.children}</>
+            <AuthContextProvider>
+              <>{props.children}</>
+            </AuthContextProvider>
           </BrowserRouter>
         </ThemeProvider>
       </StyledEngineProvider>
