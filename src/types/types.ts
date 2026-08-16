@@ -12,3 +12,10 @@ export type Task = {
 };
 
 export type TaskStatus = "todo" | "doing" | "done" | "failed";
+
+export type Step = {
+  id: string;
+  taskId: string;
+  title: string;
+  status: TaskStatus;
+};

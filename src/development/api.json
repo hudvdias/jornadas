@@ -15,14 +15,28 @@
     },
     {
       "userId": "a",
-      "status": "doing",
-      "title": "Tarefa ativa",
+      "status": "todo",
+      "title": "Rotina Aurora",
+      "id": "b"
+    }
+  ],
+  "steps": [
+    {
+      "taskId": "b",
+      "status": "todo",
+      "title": "Acordar até 8h",
+      "id": "a"
+    },
+    {
+      "taskId": "b",
+      "status": "todo",
+      "title": "Trocar roupa e fralda",
       "id": "b"
     },
     {
-      "userId": "a",
-      "status": "done",
-      "title": "Tarefa realizada com sucesso",
+      "taskId": "b",
+      "status": "todo",
+      "title": "Dar café da manhã com fruta",
       "id": "c"
     }
   ],
