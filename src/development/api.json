@@ -3,27 +3,27 @@
     {
       "username": "hudson",
       "password": "senha",
-      "id": "1"
+      "id": "a"
     }
   ],
   "tasks": [
     {
-      "userId": "1",
+      "userId": "a",
       "status": "todo",
       "title": "Testar renderização das tarefas",
-      "id": "1"
+      "id": "a"
     },
     {
-      "userId": "1",
+      "userId": "a",
       "status": "doing",
       "title": "Tarefa ativa",
-      "id": "2"
+      "id": "b"
     },
     {
-      "userId": "1",
+      "userId": "a",
       "status": "done",
       "title": "Tarefa realizada com sucesso",
-      "id": "3"
+      "id": "c"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
