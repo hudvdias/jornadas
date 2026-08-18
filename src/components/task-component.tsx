@@ -1,5 +1,5 @@
-import { Remove } from "@mui/icons-material";
-import { Alert, Box, Card, CardActionArea, IconButton, type AlertColor, type AlertProps } from "@mui/material";
+import { Remove, TaskAlt, Warning } from "@mui/icons-material";
+import { Alert, AlertTitle, Box, Card, Chip, IconButton, Stack, type AlertColor, type AlertProps } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../libraries/axios";
 import type { Step, Task } from "../types/types";
@@ -29,19 +29,47 @@ export function TaskComponent(props: Props) {
   return (
     <Card className="flex flex-col p-2 gap-2">
       <Box className="flex items-center gap-2">
-        <CardActionArea>
-          <Alert variant={statusConfig[props.task.status].variant} severity={statusConfig[props.task.status].severity}>
-            {props.task.title} {hasStep && `(${stepQuery.data.length})`}
-          </Alert>
-        </CardActionArea>
-        {hasStep && (
-          <IconButton>
-            <Remove />
-          </IconButton>
-        )}
+        <Alert
+          className="w-full items-center"
+          variant={statusConfig[props.task.status].variant}
+          severity={statusConfig[props.task.status].severity}
+          icon={
+            <IconButton color="warning" className="w-max h-max">
+              <Warning />
+            </IconButton>
+          }
+          action={
+            hasStep && (
+              <IconButton>
+                <Remove />
+              </IconButton>
+            )
+          }
+        >
+          <AlertTitle>{props.task.title}</AlertTitle>
+          <Stack direction="row" spacing={1}>
+            {hasStep && <Chip size="small" label="2/3" />}
+            <Chip size="small" label="📖 Estudo" />
+            <Chip size="small" label="Diária" />
+          </Stack>
+        </Alert>
       </Box>
       {stepQuery.data?.map((step) => {
-        return <Alert key={step.id}>{step.title}</Alert>;
+        return (
+          <>
+            <Alert
+              className="flex items-center"
+              key={step.id}
+              icon={
+                <IconButton size="small" color="success" className="w-max h-max">
+                  <TaskAlt />
+                </IconButton>
+              }
+            >
+              {step.title}
+            </Alert>
+          </>
+        );
       })}
     </Card>
   );

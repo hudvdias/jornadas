@@ -9,7 +9,7 @@ export function DashboardLayout() {
   const useAuth = useContext(AuthContext);
 
   return (
-    <Container className="flex flex-col h-screen" disableGutters>
+    <Container disableGutters className="flex flex-col w-full max-w-screen h-full max-h-screen">
       <AppBar position="static">
         <Toolbar>
           <IconButton onClick={() => setOpenMenu(true)}>
@@ -19,9 +19,13 @@ export function DashboardLayout() {
         </Toolbar>
       </AppBar>
 
+      {/** Main menu drawer */}
       <MainMenu isOpen={openMenu} close={() => setOpenMenu(false)} />
 
-      <Outlet />
+      {/** Render content */}
+      <Container maxWidth="md" disableGutters>
+        <Outlet />
+      </Container>
     </Container>
   );
 }

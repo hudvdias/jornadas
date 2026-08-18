@@ -6,18 +6,36 @@
       "id": "a"
     }
   ],
+  "categories": [
+    {
+      "id": "a",
+      "userId": "a",
+      "title": "App Jornadas"
+    },
+    {
+      "id": "b",
+      "userId": "a",
+      "title": "Aurora ☀️"
+    }
+  ],
   "tasks": [
     {
       "userId": "a",
       "status": "todo",
       "title": "Testar renderização das tarefas",
-      "id": "a"
+      "id": "a",
+      "date": "2026-08-17",
+      "categoryId": "a",
+      "recurrency": "once"
     },
     {
       "userId": "a",
       "status": "todo",
-      "title": "Rotina Aurora",
-      "id": "b"
+      "title": "Rotina Matinal da Aurora",
+      "id": "b",
+      "date": "2026-08-17",
+      "categoryId": "b",
+      "recurrency": "daily"
     }
   ],
   "steps": [
@@ -40,5 +58,17 @@
       "id": "c"
     }
   ],
+  "days": [
+    {
+      "id": "a",
+      "userId": "a",
+      "weekId": "a",
+      "yearId": "a",
+      "date": "2026-08-18"
+    }
+  ],
+  "weeks": [],
+  "months": [],
+  "years": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

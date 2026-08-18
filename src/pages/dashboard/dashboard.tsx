@@ -25,7 +25,7 @@ export function DashboardPage() {
 
   if (!tasksQuery.data || tasksQuery.data.length === 0) {
     return (
-      <Container className="p-8">
+      <Container className="p-4">
         <Typography>Nenhuma tarefa para hoje.</Typography>
       </Container>
     );
@@ -33,7 +33,7 @@ export function DashboardPage() {
 
   if (tasksQuery.data.length > 0) {
     return (
-      <Container className="p-8">
+      <Container className="p-4">
         <Stack spacing={1}>
           {tasksQuery.data.map((task) => {
             return <TaskComponent key={task.id} task={task} />;

@@ -17,12 +17,16 @@ export function CreateTaskModal(props: Props) {
     if (!title) return;
     await api.post("/tasks", { userId: useAuth?.user?.id, status: "todo", title });
     alert("Tarefa criada com sucesso!");
+    onClose();
+  }
+
+  async function onClose() {
     setTitle("");
     props.close();
   }
 
   return (
-    <Dialog open={props.isOpen} fullWidth maxWidth="sm" component={"form"} onSubmit={(event) => createTask(event)}>
+    <Dialog open={props.isOpen} fullWidth maxWidth="xs" component={"form"} onSubmit={(event) => createTask(event)}>
       <DialogTitle>Criar Tarefa</DialogTitle>
       <DialogContent>
         <TextField size="small" label="Tarefa" required fullWidth value={title} onChange={(event) => setTitle(event.target.value)} />
@@ -31,7 +35,7 @@ export function CreateTaskModal(props: Props) {
         <Button variant="contained" type="submit">
           Criar Tarefa
         </Button>
-        <Button color="error" type="reset" onClick={() => props.close()}>
+        <Button color="error" type="reset" onClick={() => onClose()}>
           Cancelar
         </Button>
       </DialogActions>
