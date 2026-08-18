@@ -1,21 +1,24 @@
-import { Remove, TaskAlt, Warning } from "@mui/icons-material";
+import { Add, Clear, ErrorOutlineOutlined, HelpOutlineOutlined, Remove, TaskAlt } from "@mui/icons-material";
 import { Alert, AlertTitle, Box, Card, Chip, IconButton, Stack, type AlertColor, type AlertProps } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
+import { useState, type ReactNode } from "react";
 import { api } from "../libraries/axios";
 import type { Step, Task } from "../types/types";
 
 type Props = { task: Task };
 
-type StatusConfig = Record<Task["status"], { variant: AlertProps["variant"]; severity: AlertColor }>;
+type StatusConfig = Record<Task["status"], { variant: AlertProps["variant"]; severity: AlertColor; icon: ReactNode }>;
 
 const statusConfig: StatusConfig = {
-  todo: { variant: "outlined", severity: "warning" },
-  doing: { variant: "filled", severity: "info" },
-  done: { variant: "standard", severity: "success" },
-  failed: { variant: "standard", severity: "error" },
+  todo: { variant: "outlined", severity: "warning", icon: <HelpOutlineOutlined /> },
+  doing: { variant: "outlined", severity: "info", icon: <ErrorOutlineOutlined /> },
+  done: { variant: "standard", severity: "success", icon: <TaskAlt /> },
+  failed: { variant: "standard", severity: "error", icon: <Clear /> },
 };
 
 export function TaskComponent(props: Props) {
+  const [open, setOpen] = useState(true);
+
   const stepQuery = useQuery({
     queryKey: ["steps", props.task.id],
     queryFn: async () => {
@@ -25,6 +28,7 @@ export function TaskComponent(props: Props) {
   });
 
   const hasStep = stepQuery.data && stepQuery.data?.length > 0;
+  const completedSteps = stepQuery.data?.filter((item) => item.status === "done").length;
 
   return (
     <Card className="flex flex-col p-2 gap-2">
@@ -34,43 +38,42 @@ export function TaskComponent(props: Props) {
           variant={statusConfig[props.task.status].variant}
           severity={statusConfig[props.task.status].severity}
           icon={
-            <IconButton color="warning" className="w-max h-max">
-              <Warning />
+            <IconButton color={statusConfig[props.task.status].severity} className="w-max h-max">
+              {statusConfig[props.task.status].icon}
             </IconButton>
           }
-          action={
-            hasStep && (
-              <IconButton>
-                <Remove />
-              </IconButton>
-            )
-          }
+          action={<IconButton onClick={() => setOpen((value) => !value)}>{open ? <Remove /> : <Add />}</IconButton>}
         >
-          <AlertTitle>{props.task.title}</AlertTitle>
-          <Stack direction="row" spacing={1}>
-            {hasStep && <Chip size="small" label="2/3" />}
-            <Chip size="small" label="📖 Estudo" />
-            <Chip size="small" label="Diária" />
-          </Stack>
+          <AlertTitle className={`${open ? "" : "m-0"} truncate`}>{props.task.title}</AlertTitle>
+          {open && (
+            <Stack direction="row" spacing={1}>
+              {hasStep && <Chip color="warning" size="small" label={`${completedSteps}/${stepQuery.data.length}`} variant="outlined" />}
+              <Chip size="small" label="📖 Estudo" variant="outlined" />
+              <Chip size="small" label="Hoje" color="error" variant="outlined" />
+            </Stack>
+          )}
         </Alert>
       </Box>
-      {stepQuery.data?.map((step) => {
-        return (
-          <>
-            <Alert
-              className="flex items-center"
-              key={step.id}
-              icon={
-                <IconButton size="small" color="success" className="w-max h-max">
-                  <TaskAlt />
-                </IconButton>
-              }
-            >
-              {step.title}
-            </Alert>
-          </>
-        );
-      })}
+      {open &&
+        stepQuery.data?.map((step) => {
+          return (
+            <>
+              <Alert
+                variant={statusConfig[step.status].variant}
+                severity={statusConfig[step.status].severity}
+                className="flex items-center py-0 px-4 truncate"
+                key={step.id}
+                icon={
+                  <IconButton color={statusConfig[step.status].severity} className="w-max h-max">
+                    {statusConfig[step.status].icon}
+                  </IconButton>
+                }
+              >
+                {step.title}
+              </Alert>
+            </>
+          );
+        })}
     </Card>
   );
 }
