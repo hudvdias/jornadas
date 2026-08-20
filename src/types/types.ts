@@ -41,7 +41,7 @@ export type Category = {
 };
 
 export type TaskStatus = "todo" | "doing" | "done" | "failed";
-export type TaskRecurrency = "once" | "daily" | "weekly" | "monthly" | "annual";
+export type TaskRecurrency = "once" | "daily" | "weekly" | "monthly";
 
 export type Task = {
   id: string;

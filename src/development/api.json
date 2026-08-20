@@ -1,72 +1,9 @@
 {
-  "users": [
-    {
-      "username": "hudson",
-      "password": "senha",
-      "id": "a"
-    }
-  ],
-  "categories": [
-    {
-      "id": "a",
-      "userId": "a",
-      "title": "App Jornadas"
-    },
-    {
-      "id": "b",
-      "userId": "a",
-      "title": "Aurora ☀️"
-    }
-  ],
-  "tasks": [
-    {
-      "userId": "a",
-      "status": "todo",
-      "title": "Testar renderização das tarefas",
-      "id": "a",
-      "date": "2026-08-17",
-      "categoryId": "a",
-      "recurrency": "once"
-    },
-    {
-      "userId": "a",
-      "status": "doing",
-      "title": "Rotina Matinal da Aurora",
-      "id": "b",
-      "date": "2026-08-17",
-      "categoryId": "b",
-      "recurrency": "daily"
-    }
-  ],
-  "steps": [
-    {
-      "taskId": "b",
-      "status": "todo",
-      "title": "Acordar até 8h",
-      "id": "a"
-    },
-    {
-      "taskId": "b",
-      "status": "todo",
-      "title": "Trocar roupa e fralda",
-      "id": "b"
-    },
-    {
-      "taskId": "b",
-      "status": "todo",
-      "title": "Dar café da manhã com fruta",
-      "id": "c"
-    }
-  ],
-  "days": [
-    {
-      "id": "a",
-      "userId": "a",
-      "weekId": "a",
-      "yearId": "a",
-      "date": "2026-08-18"
-    }
-  ],
+  "users": [],
+  "categories": [],
+  "tasks": [],
+  "steps": [],
+  "days": [],
   "weeks": [],
   "months": [],
   "years": [],
