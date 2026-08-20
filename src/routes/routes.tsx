@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router";
 import { NoRequireAuth } from "../components/authentication/no-require-auth";
-import { RequireAuth } from "../components/authentication/require-auth";
 import { DashboardLayout } from "../components/layout/dashboard-layout";
 import { LoginPage } from "../pages/authentication/login";
 import { RegisterPage } from "../pages/authentication/register";
@@ -22,12 +21,12 @@ export function AppRoutes() {
       </Route>
 
       {/** Dashboard Routes */}
-      <Route element={<RequireAuth />}>
-        <Route element={<DashboardLayout />}>
-          <Route path="dashboard" element={<DashboardPage />}></Route>
-          <Route path="manager" element={<ManagerPage />}></Route>
-        </Route>
+      {/* <Route element={<RequireAuth />}> */}
+      <Route element={<DashboardLayout />}>
+        <Route path="dashboard" element={<DashboardPage />}></Route>
+        <Route path="manager" element={<ManagerPage />}></Route>
       </Route>
+      {/* </Route> */}
 
       {/** Fallback */}
       <Route path="*" element={<NotFounPage />}></Route>
