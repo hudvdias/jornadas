@@ -1,5 +1,5 @@
 import { Checklist, Close, EditNote, Logout, Menu } from "@mui/icons-material";
-import { AppBar, Box, Container, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, CardContent, Container, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 import { NavLink, Outlet } from "react-router";
 import { AuthContext } from "../../contexts/auth-context";
@@ -45,19 +45,21 @@ function MainMenu(props: MainMenuProps) {
   return (
     <Drawer open={props.isOpen}>
       <Box className="w-xs h-screen flex flex-col">
-        <Box className="p-2 flex">
+        <CardContent className="flex">
           <IconButton className="ml-auto" onClick={() => props.close()}>
             <Close />
           </IconButton>
-        </Box>
+        </CardContent>
+
         <Divider />
+
         <List>
           {menuOptions.map((option) => (
             <NavLink to={option.path} onClick={() => close} key={option.title}>
               {({ isActive }) => (
-                <ListItem disablePadding className={isActive ? "text-cyan-500" : ""}>
+                <ListItem disablePadding disableGutters className={isActive ? "text-cyan-400" : ""}>
                   <ListItemButton>
-                    <ListItemIcon className={isActive ? "text-cyan-500" : ""}>{option.icon}</ListItemIcon>
+                    <ListItemIcon className={isActive ? "text-cyan-400" : ""}>{option.icon}</ListItemIcon>
                     <ListItemText primary={option.title} />
                   </ListItemButton>
                 </ListItem>

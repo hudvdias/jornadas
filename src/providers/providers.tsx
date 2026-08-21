@@ -1,5 +1,7 @@
 import { CssBaseline, GlobalStyles } from "@mui/material";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { BrowserRouter } from "react-router";
@@ -20,7 +22,9 @@ export function Providers(props: Props) {
           <QueryClientProvider client={queryClient}>
             <BrowserRouter>
               <AuthContextProvider>
-                <>{props.children}</>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <>{props.children}</>
+                </LocalizationProvider>
               </AuthContextProvider>
             </BrowserRouter>
           </QueryClientProvider>
